@@ -1,9 +1,15 @@
 import {EditorState, EditorView, basicSetup} from "@codemirror/basic-setup"
-import {javascript} from "@codemirror/lang-javascript"
+import {java} from "@codemirror/lang-java"
 
-let state = EditorState.create({doc: 'console.log("Hello world")', extensions: [
+let state = EditorState.create({doc: `public class App {
+
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
+`, extensions: [
   basicSetup,
-  javascript(),
+  java(),
 ]})
 
 ;(window as any).view = new EditorView({state, parent: document.querySelector("#editor")!})
